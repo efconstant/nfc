@@ -14,5 +14,9 @@ Dans un premier temps, il faudra tester les fonctionnalités suivantes :
 Le code du projet n'est pas complet, il faudra modifier les différentes classes en fonction des commentaires qu'elles contiennent. 
 Pour cela, identifiez les TODO pour compléter les différents cas d'utilisation. 
 
+## Pré Requis
+1. Téléphone Android NFC
+2. 1 ou plusieurs Tags NFC
+
 ## Rendu 
 Chaque modification doit faire l'objet d'un commit dans vos projets respectifs. Le repo final devra être rendu selon les conditions qui vous seront communiquées pendant le cours.
