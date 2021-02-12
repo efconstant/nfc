@@ -21,12 +21,12 @@ public class NFCReaderActivity extends Activity {
     private PendingIntent pendingIntent;
     public static String TAG = "TAG";
 
-    // TODO Lire le contenu d'un tag et effectuer les actions en fonction du contenu
+    // TODO Lire le contenu d'un tag et effectuer les actions en fonction du contenu [OK]
     // TODO Si c'est un numéro de téléphone, lancer un appel
     // TODO Si c'est une page web lancer un navigateur pour afficher la page
     // TODO Sinon afficher le contenu dans la textviewx
     // TODO utiliser le view binding
-    // TODO Faire en sorte que l'app ne crash pas si le tag est vierge ou mal formatté
+    // TODO Faire en sorte que l'app ne crash pas si le tag est vierge ou mal formatté [OK]
     // TODO Demander à l'utilisateur d'activer le NFC, s'il ne l'est pas
 
     @Override
@@ -141,11 +141,17 @@ public class NFCReaderActivity extends Activity {
                         //parse NDEF record as String:
                         //============================
                         byte[] payload = ndefRecord.getPayload();
-                        String encoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTf-8";
-                        int languageSize = payload[0] & 0063;
+                        String recordTxt = "";
+
                         try {
-                            String recordTxt = new String(payload, languageSize + 1,
-                                    payload.length - languageSize - 1, encoding);
+                            if(payload.length> 0) {
+                                String encoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTf-8";
+                                int languageSize = payload[0] & 0063;
+                                 recordTxt = new String(payload, languageSize + 1,
+                                        payload.length - languageSize - 1, encoding);
+                            } else{
+                                recordTxt= "Aucune information detectée sur la carte";
+                            }
 
                             message = message + ", NDEF MESSAGE : " + recordTxt;
 

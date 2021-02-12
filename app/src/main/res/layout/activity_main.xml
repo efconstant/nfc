@@ -51,5 +51,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_write_tag" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_beam_p2p"
+        app:layout_constraintBottom_toTopOf="@id/valInput"
+        >
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/t_l_phone"
+            app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/url"
+            app:layout_constraintTop_toBottomOf="@id/radioButton1" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/other"
+            app:layout_constraintTop_toBottomOf="@id/radioButton2" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/valInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOK"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valInput" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

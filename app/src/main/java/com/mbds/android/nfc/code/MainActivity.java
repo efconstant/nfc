@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     //TODO C'est quoi le View Binding ? https://developer.android.com/topic/libraries/view-binding
     private ActivityMainBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +26,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        binding.radioButton1.setVisibility(View.INVISIBLE);
+        binding.radioButton2.setVisibility(View.INVISIBLE);
+        binding.radioButton3.setVisibility(View.INVISIBLE);
+        binding.valInput.setVisibility(View.INVISIBLE);
+        binding.btnOK.setVisibility(View.INVISIBLE);
+
+//        radioButton1.setVisibility(View.INVISIBLE);
+//        radioButton2.setVisibility(View.INVISIBLE);
+//        radioButton3.setVisibility(View.INVISIBLE);
+//        valInput.setVisibility(View.INVISIBLE);
+//        btn_OK.setVisibility(View.INVISIBLE);
+
 
         handleActions();
     }
@@ -37,7 +53,16 @@ public class MainActivity extends AppCompatActivity {
         binding.btnWriteTag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, NFCWriterActivity.class));
+                //show form on click
+                binding.radioButton1.setVisibility(View.VISIBLE);
+                binding.radioButton2.setVisibility(View.VISIBLE);
+                binding.radioButton3.setVisibility(View.VISIBLE);
+                binding.valInput.setVisibility(View.VISIBLE);
+                binding.btnOK.setVisibility(View.VISIBLE);
+                binding.btnOK.setEnabled(false);
+                binding.btnWriteTag.setEnabled(false);
+
+                //startActivity(new Intent(MainActivity.this, NFCWriterActivity.class));
             }
         });
 
@@ -45,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, NDEFPushActivity.class));
+            }
+        });
+
+        binding.btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NFCWriterActivity.class));
             }
         });
     }
